@@ -32,7 +32,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
 
 resource "random_integer" "tesla_bucket" {
   min = 1
-  max = 200
+  max = 500
   keepers = {
     # Generate a new integer each time we switch to a new Environment
     Environment = var.aws_s3_bucket
