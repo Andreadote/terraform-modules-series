@@ -9,5 +9,5 @@ variable "aws_region" {
 }
 variable "bucket_versioning" {
   type    = string
-  default = "enabled"
+  default = "Enabled"  # Update to "Suspended" or "Disabled" as needed
 }
