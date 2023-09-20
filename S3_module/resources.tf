@@ -37,3 +37,10 @@ resource "random_integer" "tesla_bucket" {
     Environment = var.aws_s3_bucket
   }
 }
+
+resource "aws_s3_bucket_versioning" "versioning_tesla_bucket" {
+  bucket = aws_s3_bucket.tesla_bucket.id
+  versioning_configuration {
+    status = var.bucket_versioning
+  }
+}
