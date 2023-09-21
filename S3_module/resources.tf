@@ -5,9 +5,8 @@ resource "aws_kms_key" "tesla_key" {
 }
 
 resource "aws_s3_bucket" "tesla_bucket" {
+  count = var.tesla_vpc ? 1: 0
   bucket = "bootcamp32-${lower(var.aws_s3_bucket)}-${random_integer.tesla_bucket.result}" # Replace with your desired bucket name
-
-
 
   tags = {
     Name        = "MyS3Bucket"
@@ -17,7 +16,7 @@ resource "aws_s3_bucket" "tesla_bucket" {
 
 # Server-side encryption configuration for the S3 bucket
 resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
-  bucket = aws_s3_bucket.tesla_bucket.bucket
+  bucket = aws_s3_bucket.tesla_bucket.bucket[0].id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -38,7 +37,7 @@ resource "random_integer" "tesla_bucket" {
 }
 
 resource "aws_s3_bucket_versioning" "versioning_tesla_bucket" {
-  bucket = aws_s3_bucket.tesla_bucket.bucket
+  bucket = aws_s3_bucket.tesla_bucket.bucket[0].id
 
   versioning_configuration {
     status = var.bucket_versioning
