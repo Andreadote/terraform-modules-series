@@ -11,3 +11,7 @@ variable "bucket_versioning" {
   type    = string
   default = "Enabled"  # Update to "Suspended" or "Disabled" as needed
 }
+variable "tesla_vpc" {
+  type    = bool
+  default = true
+}
