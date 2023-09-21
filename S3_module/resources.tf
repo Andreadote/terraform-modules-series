@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "tesla_bucket" {
 
 # Server-side encryption configuration for the S3 bucket
 resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
-  bucket = aws_s3_bucket.tesla_bucket.bucket[0].id
+  bucket = aws_s3_bucket.tesla_bucket.bucket[count.index].id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -37,7 +37,7 @@ resource "random_integer" "tesla_bucket" {
 }
 
 resource "aws_s3_bucket_versioning" "versioning_tesla_bucket" {
-  bucket = aws_s3_bucket.tesla_bucket.bucket[0].id
+  bucket = aws_s3_bucket.tesla_bucket.bucket[count.index].id
 
   versioning_configuration {
     status = var.bucket_versioning
