@@ -9,7 +9,7 @@ variable "aws_region" {
 }
 variable "bucket_versioning" {
   type    = string
-  default = "Enabled"  # Update to "Suspended" or "Disabled" as needed
+  default = "Enabled" # Update to "Suspended" or "Disabled" as needed
 }
 variable "tesla_vpc" {
   type    = bool
