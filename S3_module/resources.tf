@@ -7,7 +7,7 @@ resource "aws_kms_key" "tesla_key" {
 # S3 bucket for tesla
 resource "aws_s3_bucket" "tesla_bucket" {
   count = var.tesla_vpc ? 1 : 0
-  bucket = "bootcamp32-${lower(var.aws_s3_bucket)}-${random_integer.tesla_bucket.result}"
+  bucket = "bootcamp32-${lower(var.aws_s3_bucket)}-${random_integer.tesla_bucket[count.index].result}"
 
   tags = {
     Name        = "MyS3Bucket"
