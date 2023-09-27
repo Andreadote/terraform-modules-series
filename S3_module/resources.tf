@@ -2,6 +2,8 @@
 resource "aws_kms_key" "tesla_key" {
   description             = "Key used to encrypt bucket objects"
   deletion_window_in_days = 10
+  is_enabled              = true
+  enable_key_rotation     = true
 }
 
 
@@ -51,3 +53,7 @@ resource "aws_s3_bucket_versioning" "versioning_tesla_bucket" {
   }
 }
 
+resource "aws_s3_bucket_acl" "tesla_1" {
+  bucket = aws_s3_bucket.tesla_bucket[0].id
+  acl    = "private"
+}
