@@ -16,12 +16,4 @@ variable "tesla_vpc" {
   default = true
 }
 
-variable "aws_access" {
-  type    = string
-  default = "AKIARTDON27ABQUJNYH4"
-}
 
-variable "aws_secret" {
-  type    = string
-  default = "rCzbKmCO9CjIfVmy9dCSQ+kRf41gzgUz1gmOgF6k"
-}
