@@ -35,7 +35,7 @@ terraform validate
 terraform plan -out=${TF_PLAN}
 
 # Show the Terraform plan in JSON format
-terraform show -json ${TF_PLAN} | jp '.' > ${TF_PLAN}.json
+terraform show -json ${TF_PLAN} | jq '.' > ${TF_PLAN}.json
 # Run this command on your local terminal first to install or upgrade Checkov
 ############  pip3 install -U checkov    #######################################
 

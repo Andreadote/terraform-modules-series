@@ -4,8 +4,8 @@ provider "vault" {
 }
 
 resource "vault_aws_secret_backend" "aws" {
-  access_key = var.access_keycheck
-  secret_key = var.secret_keycheck
+  access_key = var.access_key
+  secret_key = var.secret_key
   region     = "us-west-2"
 
   default_lease_ttl_seconds = "120"
@@ -20,22 +20,21 @@ resource "vault_aws_secret_backend_role" "ec2_admin" {
 
   policy_document = <<EOF
 {
-    "version": "2012-10-17",
-    "statement": [ 
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:*",
-                "ec2:*",
-                "eks:*"
-            ],
-            "Resource": "*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:*",
+        "ec2:*",
+        "eks:*"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 EOF
 }
-
 
 resource "vault_auth_backend" "aws" {
   type = "aws"
