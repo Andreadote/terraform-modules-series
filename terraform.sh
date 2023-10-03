@@ -66,6 +66,6 @@ fi
 
 if [ ! -f "${TF_PLAN}" ]; then
      echo "The plan does not exist******** Focus and work harder and smarter"
-     exit 88
+     exit 12
 fi
 }
